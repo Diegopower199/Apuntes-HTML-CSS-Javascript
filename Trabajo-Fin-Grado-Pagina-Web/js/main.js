@@ -48,27 +48,49 @@ function crearUsuario () {
     var password = String(idPassword.value);
     var confirmPassword = String(idConfirmPassword.value);
 
-    const encontrarUsuario = false;
+    let encontrarUsuario = false;
+    let comprobacionNombre = true;
+    let comprobacionApellido = true;
+    let comprobacionEmail = true;
+    let comprobacionPassword = true;
+
+    // expresion regular: https://aprende-web.net/javascript/js13_3.php
+
+    if (!/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/.test(firstName)) {
+        console.log("NO puedes poner ese nombre")
+        comprobacionNombre = false;
+    }
+
+    if (!/^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/.test(lastName)) {
+        console.log("NO puedes poner ese apellido");
+        comprobacionApellido = false;
+    }
+
 
     if (encontrarUsuario) {
-        console.log("Ya existe este usuario")
+        console.log("Ya existe este usuario");
+        encontrarUsuario = true;
     }
 
 
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
-        console.log("NO EXISTE ESE CORREO")
+        console.log("NO EXISTE ESE CORREO");
+        comprobacionEmail = false;
     }
 
-    else {
-
-    }
 
     if (password !== confirmPassword){
-        console.log("No hay coincidencia entre las contraseñas")
+        console.log("No hay coincidencia entre las contraseñas");
+        comprobacionPassword = false;
     }
 
-
-    window.location.href = "/home/diego/Apuntes de HTML, CSS y Javascript/Trabajo-Fin-Grado-Pagina-Web/Pantalla-Login.html";
+   
+    if (encontrarUsuario === false && comprobacionNombre === true && comprobacionApellido === true && comprobacionEmail === true && comprobacionPassword === true) {
+        window.location.href = "/home/diego/Apuntes de HTML, CSS y Javascript/Trabajo-Fin-Grado-Pagina-Web/Pantalla-Login.html";
+    }
+    else {
+        console.log("Poner los errores, que me da pereza hacerlo");
+    }
 }
 
 function pantallaOlvidarContrasena() {
