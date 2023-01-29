@@ -1,0 +1,19 @@
+.fondo-Login{
+    background-color: aqua;
+}
+
+.Titulo-Login{
+    
+}
+
+.textos{
+    margin: 10px;
+    width: 200px;
+}
+
+.Sign-Up {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 15px; /* Esto hace que se vea los bordes cerrados */
+}
